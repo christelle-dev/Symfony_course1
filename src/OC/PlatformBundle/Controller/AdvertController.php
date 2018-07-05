@@ -18,11 +18,21 @@ class AdvertController extends Controller
     return new Response($content);
   }
 
-  public function byeWorldAction ()
+  public function viewAction ($id)
   {
-    $content = $this->get('templating')
-               ->render('OCPlatformBundle:Advert:byeworld.html.twig', ['nom' => 'christelle'] );
+    /* Generateur d'url
+    $url = $this->get('router')
+           ->generate('oc_platform_view', array('id'=>$id));
+    return new Response("Affichage de l'annonce :" .$id. ". URL: " .$url);*/
 
+    $content = $this->get('templating')
+               ->render('OCPlatformBundle:Advert:url.html.twig', ['nom' => 'christelle', 'advert' => $id]);
     return new Response($content);
+
+  }
+
+  public function viewSlugAction ($year, $slug, $format)
+  {
+    return new Response("Affichage de l'annonce correspondant au slug '" .$slug. "', créée en " .$year. " et au format " .$format. ".");
   }
 }
