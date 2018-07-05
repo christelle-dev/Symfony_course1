@@ -1,11 +1,26 @@
 
 
-hello-world:
-    path:     /helloworld
+oc_platform_home:
+    path:            /{page}
     defaults:
         _controller: OCPlatformBundle:Advert:index
+        page:        1
 
-bye-world:
-   path:      /byeworld
-   defaults:
-       _controller: OCPlatformBundle:Advert:byeWorld
+oc_platform_view:
+    path:            /advert/{id}
+    defaults:
+        _controller: OCPlatformBundle:Advert:view
+
+oc_platform_viewSlug:
+    path:            /{year}/{slug}.{format}
+    defaults:
+        _controller: OCPlatformBundle:Advert:viewSlug
+        format:      html
+    requirements:
+        year:        \d{4}
+        format:      html|xml
+
+oc_platform_add:
+    path:            /add
+    defaults:
+        _controlle:  OCPlatformBundle:Advert:add
